@@ -1,4 +1,9 @@
-use axum::{Router, extract::Query, routing::get};
+use axum::{
+    Router,
+    extract::Query,
+    routing::{get, post},
+};
+use chrono::Utc;
 use maud::{DOCTYPE, Markup, html};
 use serde::Deserialize;
 
@@ -6,7 +11,8 @@ use serde::Deserialize;
 async fn main() {
     let app = Router::new()
         .route("/", get(index))
-        .route("/search", get(search));
+        .route("/search", get(search))
+        .route("/clicked", post(clicked));
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
@@ -51,6 +57,19 @@ struct SearchRequest {
 
 async fn search(q: Query<SearchRequest>) -> Markup {
     results(get_query_results(&q.q))
+}
+
+async fn clicked() -> Markup {
+    now()
+}
+
+fn now() -> Markup {
+    let now = Utc::now();
+    html! {
+        div id="parent-div" {
+            p { (now) }
+        }
+    }
 }
 
 fn results(results: Vec<&'static str>) -> Markup {
