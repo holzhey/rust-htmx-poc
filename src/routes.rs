@@ -8,7 +8,7 @@ pub struct SearchRequest {
 }
 
 pub async fn index() -> Markup {
-    crate::view::index()
+    crate::view::index(crate::repository::get_results())
 }
 
 pub async fn search(q: Query<SearchRequest>) -> Markup {

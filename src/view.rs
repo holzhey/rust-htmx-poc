@@ -1,7 +1,7 @@
 use chrono::Utc;
 use maud::{DOCTYPE, Markup, html};
 
-pub fn index() -> Markup {
+pub fn index(data: Vec<&'static str>) -> Markup {
     html! {
         (DOCTYPE)
         html lang="en" {
@@ -26,7 +26,7 @@ pub fn index() -> Markup {
                               hx-trigger="keyup changed delay:500ms"
                               hx-target="#search-results"
                               placeholder="Search..." {}
-                        (results(crate::repository::get_results()))
+                        (results(data))
                     }
                 }
             }
