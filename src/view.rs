@@ -7,8 +7,8 @@ pub fn index(data: Vec<&'static str>) -> Markup {
         html lang="en" {
             head {
                 link rel="stylesheet"
-                     href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" {}
-                script src="https://unpkg.com/htmx.org@2.0.1" {}
+                     href="/assets/pico.min.css" {}
+                script src="/assets/htmx.org@2.0.1" {}
             }
             body {
                 main class="container" {
