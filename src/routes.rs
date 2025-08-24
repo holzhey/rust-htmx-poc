@@ -1,4 +1,5 @@
 use axum::extract::Query;
+use chrono::Utc;
 use maud::Markup;
 use serde::Deserialize;
 
@@ -16,5 +17,6 @@ pub async fn search(q: Query<SearchRequest>) -> Markup {
 }
 
 pub async fn clicked() -> Markup {
-    crate::view::now()
+    let now = Utc::now();
+    crate::view::now(now)
 }

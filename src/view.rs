@@ -1,4 +1,4 @@
-use chrono::Utc;
+use chrono::{DateTime, Utc};
 use maud::{DOCTYPE, Markup, html};
 
 pub fn index(data: Vec<&'static str>) -> Markup {
@@ -34,8 +34,7 @@ pub fn index(data: Vec<&'static str>) -> Markup {
     }
 }
 
-pub fn now() -> Markup {
-    let now = Utc::now();
+pub fn now(now: DateTime<Utc>) -> Markup {
     html! {
         div id="parent-div" {
             p { (now) }
