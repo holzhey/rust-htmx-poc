@@ -6,8 +6,7 @@ pub fn index(data: Vec<&'static str>) -> Markup {
         (DOCTYPE)
         html lang="en" {
             head {
-                link rel="stylesheet"
-                     href="/assets/pico.min.css" {}
+                link rel="stylesheet" href="/assets/pico.min.css" {}
                 script src="/assets/htmx.org@2.0.1" {}
             }
             body {
